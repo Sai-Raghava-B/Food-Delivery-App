@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'whitenoise.runserver_nostatic',  # If you're using Django's built-in development server
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "delivery",
     'rest_framework',
     'corsheaders',
