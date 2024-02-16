@@ -5,7 +5,7 @@ from delivery.models import Organization, Item, Pricing
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Fetch the organization and item
-        organization = Organization.objects.get(id="005")
+        organization = Organization.objects.get(id="001")
         item = Item.objects.get(type="Perishable")
         
         # Create a Pricing entry with the specified values
