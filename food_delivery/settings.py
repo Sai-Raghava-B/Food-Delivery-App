@@ -22,17 +22,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# SECRET_KEY = "django-insecure-iwc1l&!=&dsg@@ask7t)w553r1-9p3k_sb*(y(@i6c2=%ob#^o"
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "django-insecure-iwc1l&!=&dsg@@ask7t)w553r1-9p3k_sb*(y(@i6c2=%ob#^o"
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+# DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 DEBUG = True
 
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
 
 
+# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -41,8 +45,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'whitenoise.runserver_nostatic',  # If you're using Django's built-in development server
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     "delivery",
     'rest_framework',
     'corsheaders',
@@ -57,7 +59,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "food_delivery.urls"
@@ -87,20 +89,6 @@ CORS_ALLOWED_ORIGINS = [
 # Allow all headers and methods (customize as needed)
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-
-
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
-if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # STATIC_ROOT = BASE_DIR / 'staticfiles'
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# Application definition
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -110,9 +98,9 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
-# DATABASES["default"] = dj_database_url.parse("postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg")
+# database_url = os.environ.get("DATABASE_URL")
+# DATABASES["default"] = dj_database_url.parse(database_url)
+DATABASES["default"] = dj_database_url.parse("postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg")
 #postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg
 
 # Password validation
