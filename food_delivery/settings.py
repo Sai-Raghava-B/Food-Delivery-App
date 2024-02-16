@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "delivery",
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
