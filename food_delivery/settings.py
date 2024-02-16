@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower == "true"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
+# ALLOWED_HOSTS = []
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
@@ -92,8 +93,8 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-databse_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(databse_url)
+database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
 # DATABASES["default"] = dj_database_url.parse("postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg")
 #postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg
 
