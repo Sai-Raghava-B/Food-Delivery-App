@@ -22,14 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
-SECRET_KEY = "django-insecure-iwc1l&!=&dsg@@ask7t)w553r1-9p3k_sb*(y(@i6c2=%ob#^o"
+# SECRET_KEY = "django-insecure-iwc1l&!=&dsg@@ask7t)w553r1-9p3k_sb*(y(@i6c2=%ob#^o"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower == "true"
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
@@ -94,9 +94,9 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-# database_url = os.environ.get("DATABASE_URL")
-# DATABASES["default"] = dj_database_url.parse(database_url)
-DATABASES["default"] = dj_database_url.parse("postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg")
+database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
+# DATABASES["default"] = dj_database_url.parse("postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg")
 #postgres://food_delivery_app_36qg_user:TPJNGrrtQQnbsvWbTJQl6jeeQRyfFVAC@dpg-cn7g59mn7f5s73dbpth0-a.oregon-postgres.render.com/food_delivery_app_36qg
 
 # Password validation
